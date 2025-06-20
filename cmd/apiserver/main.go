@@ -40,7 +40,7 @@ func main() {
 	router.GET("/v1/:email/verification", GetEmailVerification)
 
 	server := &http.Server{
-		Addr:         ":8080",
+		Addr:         ":8081",
 		Handler:      router,
 		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 30 * time.Second,

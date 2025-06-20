@@ -1,0 +1,54 @@
+# Binaries
+/email-verifier
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Environment files
+.env
+*.env
+
+# Test and coverage files
+*.cover
+*.test
+
+# Build output
+bin/
+dist/
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Local development files
+local.env
+development.env
+
+# Deployment files not needed in container
+**/deployment/**
+**/docs/**
+**/examples/**
+**/test*/**
+**/*_test.go
+**/.github/

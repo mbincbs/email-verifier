@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Verifier API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Verifier API Test</h1>
+    <div class="container">
+        <input type="text" id="emailInput" placeholder="Enter email address" value="test@example.com">
+        <button onclick="verifyEmail()">Verify Email</button>
+        <div id="result">Results will appear here...</div>
+    </div>
+
+    <script>
+        async function verifyEmail() {
+            const email = document.getElementById('emailInput').value.trim();
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Verifying...';
+
+            try {
+                const url = `http://localhost:8081/v1/${encodeURIComponent(email)}/verification`;
+                console.log('Making request to:', url);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.textContent = `Error: ${error.message}\n\nMake sure the API server is running on port 8081.`;
+            }
+        }
+    </script>
+</body>
+</html>

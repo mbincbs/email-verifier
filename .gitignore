@@ -1,3 +1,56 @@
 .idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+
+# Go build and dependency directories
 vendor/
+bin/
+
+# Test and coverage files
 covprofile
+*.test
+coverage.out
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build output
+/dist
+/build
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.dockerignore
+
+# Local development
+.cache/
+.DS_Store
+Thumbs.db
+
+# Deployment specific
+deployment/certs/
+deployment/nginx/conf.d/default.conf
+deployment/nginx/conf.d/nginx.conf
+
+# Ignore the test API file (temporary for development)
+test_api.html
+
+# Ignore the test verifier file (temporary for development)
+test_verifier.go
+
+# Ignore the serve.go file (temporary for development)
+serve.go
